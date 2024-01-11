@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wechat.mapper.RegistrantMapper">
+<!--    <select id="getApplicantsByGrade" resultType="com.scholarship.entity.Applicant">-->
+<!--        SELECT * FROM applicant WHERE grade = #{grade}-->
+<!--    </select>-->
+
+<!--    <delete id="deleteApplicant">-->
+<!--        DELETE FROM applicant WHERE student_id = #{studentId}-->
+<!--    </delete>-->
+
+<!--    <insert id="saveScholarship">-->
+<!--        INSERT INTO applicant-->
+<!--        (student_id, name, grade, scholarshipType, applicationTime, applicationMaterial, papers, competitions, totalPoints)-->
+<!--        VALUES-->
+<!--            (-->
+<!--                #{param1.studentId},-->
+<!--                #{param1.name},-->
+<!--                #{param1.grade},-->
+<!--                #{param1.scholarshipType},-->
+<!--                #{param1.applicationTime},-->
+<!--                #{param1.applicationMaterial},-->
+<!--                #{param1.papers},-->
+<!--                #{param1.competitions},-->
+<!--                #{param1.totalPoints}-->
+
+<!--            )-->
+<!--    </insert>-->
+
+<!--    <update id="updateApprovalStatus">-->
+<!--        UPDATE applicant-->
+<!--        SET academicEvaluation = #{param1.academicEvaluation},-->
+<!--            reason             = #{param1.reason}-->
+<!--        WHERE student_id = #{param1.studentId}-->
+<!--    </update>-->
+
+<!--    <update id="updateStudentScores">-->
+<!--        UPDATE applicant-->
+<!--        SET academicScore = #{param1.academicEvaluation},-->
+<!--            ideologyScore = #{param1.ideologyScore},-->
+<!--            researchScore = #{param1.researchScore},-->
+<!--            socialScore = #{param1.socialScore}-->
+<!--        WHERE student_id = #{param1.studentId}-->
+<!--    </update>-->
+
+</mapper>
