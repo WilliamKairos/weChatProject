@@ -10,6 +10,8 @@ public class WeChatProjectApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WeChatProjectApplication.class, args);
+
+
     }
 
 }

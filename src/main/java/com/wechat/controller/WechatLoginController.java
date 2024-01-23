@@ -1,7 +1,6 @@
 package com.wechat.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wechat.entity.Registrant;
 import com.wechat.service.RegistrantService;
 import com.wechat.util.JwtUtils;
 import com.wechat.util.Result;
@@ -12,6 +11,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +26,7 @@ import java.util.Map;
 @RequestMapping("/wechat_login")
 public class WechatLoginController {
 
+    @Autowired
     private RegistrantService registrantService;
 
     String AppId = "wx8078703fc99a8557";  //公众平台自己的appId
@@ -33,7 +34,6 @@ public class WechatLoginController {
     @GetMapping("/login")
     public Result wxLogin(@RequestParam("code") String code) throws Exception {
         System.out.println("小程序传来的code是：" + code);
-        Result result = new Result();
         String url = "https://api.weixin.qq.com/sns/jscode2session?" +
                 "appid=" + AppId +
                 "&secret=" + AppSecret +
@@ -55,18 +55,6 @@ public class WechatLoginController {
             entity = response.getEntity();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                // 释放资源
-                if (client != null) {
-                    client.close();
-                }
-                if (response != null) {
-                    response.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
 
         String urlResult = EntityUtils.toString(entity);
@@ -76,19 +64,29 @@ public class WechatLoginController {
         String openid = json_test.getString("openid");
         String sessionKey = json_test.getString("session_key");
         System.err.println("openid值： " + openid);
-        System.err.println("sessionKey值" + sessionKey);
+        System.err.println("sessionKey值：" + sessionKey);
 
-        Registrant registrant = registrantService.getById(openid);
-        System.err.println("用户信息：" + registrant);
 
-        if (openid.isEmpty()){
+        if (openid == null){
             return Result.error("未获取到openid");
         }else {
-            if (registrant == null) {
-                Registrant registrantAdd = new Registrant();
-                registrantAdd.setUid(openid);
-                registrantService.addRegistrant(registrantAdd);
-            }
+
+
+//            if (registrantService.getById(openid) == null) {
+//                Registrant registrantAdd = new Registrant();
+//                registrantAdd.setUid(openid);
+//                registrantAdd.setIC("");
+//                registrantAdd.setAge(0);
+//                registrantAdd.setAvatar("");
+//                registrantAdd.setIdentity("");
+//                registrantAdd.setDateOfBirth(new Date());
+//                registrantAdd.setMaterial("");
+//                registrantAdd.setName("");
+//                registrantAdd.setNickname("");
+//                registrantAdd.setEmpInfo("");
+//                registrantAdd.setPhoneNumber("");
+//                registrantService.addRegistrant(registrantAdd);
+//            }
 
             Map<String, Object> claims = new HashMap<>();
             claims.put("openid", openid);
