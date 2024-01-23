@@ -30,4 +30,18 @@ public class Registrant {
     private int age; //年龄
     @TableField(value = "date_of_birth")
     private Date dateOfBirth; //生日
+
+    public Registrant(String uid){
+        this.uid = uid;
+        this.name = "";
+        this.nickname = "";
+        this.avatar = "default_avatar.jpg";
+        this.empInfo = "";
+        this.phoneNumber = "";
+        this.identity = "";
+        this.material = "";
+        this.IC = "";
+        this.age = 0;
+        this.dateOfBirth = new Date(0);
+    }
 }

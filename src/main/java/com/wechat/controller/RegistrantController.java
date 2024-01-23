@@ -16,7 +16,6 @@ public class RegistrantController {
     @Autowired
     private RegistrantService registrantService;
 
-//    实现增删改查的功能
     @RequestMapping("/add")
     public Result addRegistrant(@RequestBody RegistrantDTO registrantDTO){
         try {

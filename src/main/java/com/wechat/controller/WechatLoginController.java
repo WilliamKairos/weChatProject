@@ -1,6 +1,7 @@
 package com.wechat.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wechat.entity.Registrant;
 import com.wechat.service.RegistrantService;
 import com.wechat.util.JwtUtils;
 import com.wechat.util.Result;
@@ -72,21 +73,10 @@ public class WechatLoginController {
         }else {
 
 
-//            if (registrantService.getById(openid) == null) {
-//                Registrant registrantAdd = new Registrant();
-//                registrantAdd.setUid(openid);
-//                registrantAdd.setIC("");
-//                registrantAdd.setAge(0);
-//                registrantAdd.setAvatar("");
-//                registrantAdd.setIdentity("");
-//                registrantAdd.setDateOfBirth(new Date());
-//                registrantAdd.setMaterial("");
-//                registrantAdd.setName("");
-//                registrantAdd.setNickname("");
-//                registrantAdd.setEmpInfo("");
-//                registrantAdd.setPhoneNumber("");
-//                registrantService.addRegistrant(registrantAdd);
-//            }
+            if (registrantService.getById(openid) == null) {
+                Registrant registrantAdd = new Registrant(openid);
+                registrantService.addRegistrant(registrantAdd);
+            }
 
             Map<String, Object> claims = new HashMap<>();
             claims.put("openid", openid);
