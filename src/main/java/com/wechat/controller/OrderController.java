@@ -6,8 +6,6 @@ import com.wechat.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -40,21 +38,21 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/find_by_title/{title}")
-    public Result findByTitle(@PathVariable(value = "title") String title){
-        try {
-//            Registrant result = registrantService.findRegistrantByName(name);
-            List<Order> orderList = orderService.findOrderByTitle(title);
-            if ( orderList != null) {
-                return Result.success(orderList);
-            } else {
-                return Result.error("未找到对应的结果");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error("查询错误！");
-        }
-    }
+//    @GetMapping("/find_by_title/{title}")
+//    public Result findByTitle(@PathVariable(value = "title") String title){
+//        try {
+////            Registrant result = registrantService.findRegistrantByName(name);
+//            List<Order> orderList = orderService.findOrderByTitle(title);
+//            if ( orderList != null) {
+//                return Result.success(orderList);
+//            } else {
+//                return Result.error("未找到对应的结果");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return Result.error("查询错误！");
+//        }
+//    }
 
     @GetMapping("/find_all")
     public Result findAll(){
