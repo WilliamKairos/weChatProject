@@ -97,6 +97,23 @@ public class RegistrantController {
         }
     }
 
+    //根据 UID 进行查找
+    @GetMapping("/find_by_uid/(uid)")
+    public Result findByUid(@PathVariable(value = "uid") String uid) {
+        try {
+            Registrant result = registrantService.findByUid(uid);
+
+            if (result != null) {
+                return Result.success(result);
+            } else {
+                return Result.error("未找到对应的结果");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("查询错误！");
+        }
+    }
+
 
     @GetMapping("/find_all")
     public Result findAll(){

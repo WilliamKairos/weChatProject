@@ -30,6 +30,11 @@ public class RegistrantServiceImpl extends ServiceImpl<RegistrantMapper, Registr
     }
 
     @Override
+    public Registrant findByUid(String uid){
+        return registrantMapper.selectById(uid);
+    }
+
+    @Override
     public List<Registrant> findAllRegistrant() {
         return registrantMapper.selectList(null);
     }

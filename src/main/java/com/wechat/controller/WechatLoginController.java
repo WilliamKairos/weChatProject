@@ -81,7 +81,14 @@ public class WechatLoginController {
             Map<String, Object> claims = new HashMap<>();
             claims.put("openid", openid);
             claims.put("sessionKey", sessionKey);
-            return Result.success(JwtUtils.generateJwt(claims));
+//            return Result.success(JwtUtils.generateJwt(claims));
+            String token = JwtUtils.generateJwt(claims);
+
+            Map<String, Object> data = new HashMap<>();
+            data.put("uid", openid);
+            data.put("token", token);
+
+            return Result.success(data);
         }
     }
 }
