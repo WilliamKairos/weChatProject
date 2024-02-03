@@ -98,9 +98,10 @@ public class RegistrantController {
     }
 
     //根据 UID 进行查找
-    @GetMapping("/find_by_uid/(uid)")
+    @GetMapping("/find_by_uid/{uid}")
     public Result findByUid(@PathVariable(value = "uid") String uid) {
         try {
+            System.out.println(uid);
             Registrant result = registrantService.findByUid(uid);
 
             if (result != null) {
