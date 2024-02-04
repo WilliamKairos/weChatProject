@@ -33,11 +33,11 @@ public class Registrant {
 
     public Registrant(String uid){
         this.uid = uid;
-        this.name = "";
-        this.nickname = "";
+        this.name = "张三";
+        this.nickname = "张三的昵称";
         this.avatar = "default_avatar.jpg";
-        this.empInfo = "";
-        this.phoneNumber = "";
+        this.empInfo = "张三很懒，什么都没留下";
+        this.phoneNumber = "123-4567-8900";
         this.identity = "";
         this.material = "";
         this.IC = "";
